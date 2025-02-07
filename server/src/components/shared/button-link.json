@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_shared_button_links",
+  "info": {
+    "displayName": "Button Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "ghost",
+        "outline",
+        "destructive",
+        "secondary",
+        "link"
+      ],
+      "default": "default"
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "ShoppingCart",
+        "UserIcon"
+      ]
+    }
+  }
+}
