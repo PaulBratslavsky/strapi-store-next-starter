@@ -1,0 +1,1 @@
+# strapi-store-next-starter
