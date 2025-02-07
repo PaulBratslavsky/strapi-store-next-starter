@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
+import { useSearchParams } from "next/navigation"
+
 import { loginUserAction } from "@/lib/data/actions";
 
 import {
@@ -28,6 +30,8 @@ const INITIAL_STATE = {
 
 export function SigninForm() {
   const [formState, formAction] = useActionState(loginUserAction, INITIAL_STATE);
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") ?? "/dashboard";
   return (
     <div className="w-full max-w-md">
       <form action={formAction}>
@@ -52,6 +56,7 @@ export function SigninForm() {
               <Input id="password" name="password" type="password" placeholder="password" />
               <ZodErrors error={formState.zodErrors?.password} />
             </div>
+            <input type="hidden" name="redirectTo" value={redirectTo} />
           </CardContent>
           <CardFooter className="flex flex-col">
             <SubmitButton className="w-full" text="Sign In" loadingText="Loading" />

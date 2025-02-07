@@ -19,7 +19,9 @@ export async function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;
 
   if (isProtectedRoute(currentPath) && user.ok === false) {
-    return NextResponse.redirect(new URL("/signin", request.url));
+    const redirectUrl = new URL("/signin", request.url);
+    redirectUrl.searchParams.set("redirect", currentPath);
+    return NextResponse.redirect(redirectUrl);
   }
 
   if (

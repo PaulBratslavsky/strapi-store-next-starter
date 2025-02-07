@@ -23,6 +23,7 @@ const schemaRegister = z.object({
   email: z.string().email({
     message: "Please enter a valid email address",
   }),
+  redirectTo: z.string().default("/dashboard"),
 });
 
 export async function registerUserAction(prevState: any, formData: FormData) {
@@ -30,6 +31,7 @@ export async function registerUserAction(prevState: any, formData: FormData) {
     username: formData.get("username"),
     password: formData.get("password"),
     email: formData.get("email"),
+    redirectTo: formData.get("redirectTo") || "/dashboard",
   });
 
   if (!validatedFields.success) {
@@ -63,7 +65,7 @@ export async function registerUserAction(prevState: any, formData: FormData) {
 
   const cookieStore = await cookies();
   cookieStore.set("jwt", responseData.jwt, config);
-  redirect("/dashboard");
+  redirect(validatedFields.data.redirectTo || "/dashboard");
 }
 
 const schemaLogin = z.object({
@@ -83,12 +85,14 @@ const schemaLogin = z.object({
     .max(100, {
       message: "Password must be between 6 and 100 characters",
     }),
+  redirectTo: z.string().default("/dashboard"),
 });
 
 export async function loginUserAction(prevState: any, formData: FormData) {
   const validatedFields = schemaLogin.safeParse({
     identifier: formData.get("identifier"),
     password: formData.get("password"),
+    redirectTo: formData.get("redirectTo") || "/dashboard",
   });
 
   if (!validatedFields.success) {
@@ -120,7 +124,7 @@ export async function loginUserAction(prevState: any, formData: FormData) {
   }
   const cookieStore = await cookies();
   cookieStore.set("jwt", responseData.jwt, config);
-  redirect("/dashboard");
+  redirect(validatedFields.data.redirectTo || "/dashboard");
 }
 
 export async function logoutAction() {
