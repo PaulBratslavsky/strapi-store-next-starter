@@ -5,6 +5,7 @@ import { getUserMeLoader } from "@/lib/data/services/user";
 // Define an array of protected routes
 const protectedRoutes = [
   "/dashboard",
+  "/cart",
   // Add more protected routes here
 ];
 
@@ -27,6 +28,7 @@ export async function middleware(request: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
+
 
   return NextResponse.next();
 }

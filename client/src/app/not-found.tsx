@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { XCircle } from "lucide-react"
 import Link from "next/link"
 
-export default function NotFoundPage() {
+export default function NotFoundRoute() {
   return (
     <div className="flex items-center justify-center h-full bg-background">
       <Card className="w-full max-w-md p-8 space-y-6 text-center shadow-sm">
