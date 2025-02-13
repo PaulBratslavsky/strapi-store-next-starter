@@ -59,7 +59,7 @@ export interface ProductData {
   name: string;
   slug: string;
   description: string;
-  featured: boolean;
+  featured?: boolean;
   price: string;
   createdAt: string;
   updatedAt: string;
@@ -67,6 +67,8 @@ export interface ProductData {
   images: Image[];
   banner?: Image;
   quantity: number;
+  basePath: string;
+  className?: string;
   features: {
     id: number;
     text: string;

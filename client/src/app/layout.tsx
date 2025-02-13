@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
-import { Header, Footer, SheetMenu } from "@/components/layout";
+import { Header, Footer } from "@/components/layout";
 import { notFound } from "next/navigation";
 
 import { getGlobalPageData } from "@/lib/data/loaders";
@@ -27,9 +27,10 @@ export default async function RootLayout({
   if (!data) notFound();
 
 
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${poppins.className} min-h-screen antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

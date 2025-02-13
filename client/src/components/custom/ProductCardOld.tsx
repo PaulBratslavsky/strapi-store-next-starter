@@ -31,7 +31,7 @@ export function ProductCard({ name, description, price, images, slug, quantity }
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-        <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
+        <p className="text-sm text-muted-foreground line-clamp-2 h-16 overflow-hidden">{description.slice(0, 144)}...</p>
       </CardContent>  
       <CardFooter className="flex justify-between items-center">
         <p className="font-semibold">{formatPrice(price)}</p>
